@@ -11,10 +11,33 @@ de horas trabalhadas. (Considere que o mês possua 4 semanas exatas).*/
 
 int main() {
     
-    int horas_trabalhadas, hora_extra;
-    float valor_hora, sal_total;
+    int horas_trabalhadas, horas_extras, i, mais_horas = 0, i_maior = 0;
+    float valor_hora, sal_total, salario;
 
+    for(i = 1; i <=10; i++) {
+        printf("Horas trabalhadas: ");
+        scanf("%d", &horas_trabalhadas);
+
+        printf("Salario por hora: ");
+        scanf("%f", &valor_hora);
+
+        if (horas_trabalhadas > 160) {
+            horas_extras = horas_trabalhadas - 160;
+            salario = 160 * valor_hora;
+            sal_total = salario + (horas_extras * valor_hora * 1.5);
+        } else {
+            sal_total = horas_trabalhadas * valor_hora;
+        }
+
+        printf("Salario total funcionario %d: %.2f\n", i, sal_total);
+        
+        if(horas_trabalhadas > mais_horas) {
+            mais_horas = horas_trabalhadas;
+            i_maior = i;
+        }
+    }
     
+    printf("Funcionario com mais horas: %d com %d horas\n", i_maior, mais_horas);
 
     return 0;
 }
